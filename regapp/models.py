@@ -8,3 +8,6 @@ class registration(models.Model):
     age = models.IntegerField()
     sex = models.CharField(max_length=10)
     religion = models.CharField(max_length=30)
+
+
+

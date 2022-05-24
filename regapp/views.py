@@ -1,7 +1,6 @@
+
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth.models import User
-from django.contrib import auth
+from regapp.forms import registrationform
 from .models import registration
 
 
@@ -24,8 +23,33 @@ def reg(request):
         regs.save();
         print('regs craeted')
         return redirect('/')
-
-
     else:
-        
-        return render ( request, 'reg.html' )
+        return render (request, 'reg.html')
+
+
+
+
+def showreg(request):
+    shows = registration.objects.all()
+    return render(request, 'showreg.html', {'shows':shows})
+
+
+
+
+def updatereg(request, firstname):
+    regs = registration.objects.get(firstname=firstname)
+    form = registrationform(request.POST, instance=regs)
+    if form.is_valid():
+        form.save();
+        return redirect('/')
+    else:
+        return render(request, 'updatereg.html', {'regs':regs})
+
+
+
+
+def deletereg(request, firstname):
+    regss = registration.objects.get(firstname=firstname)
+    regss.delete();
+    return redirect('/')
+

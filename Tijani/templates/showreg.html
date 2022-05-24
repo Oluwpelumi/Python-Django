@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <h4>Show Records</h4>
+        <a href="{% url 'reg'  %}">Add New</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Religion</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in shows %}
+
+                <tr>
+                    <td>{{ s.firstname }}</td>
+                    <td>{{ s.lastname }}</td>
+                    <td>{{ s.age }}</td>
+                    <td>{{ s.sex }}</td>
+                    <td>{{ s.religion }}</td>
+                    <td>
+                        <a href="/updatereg/{{s.firstname}}">Edit</a>
+                        <a href="/deletereg/{{s.firstname}}">Delete</a>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+           
+
+
+    </div>
+    {% endblock content %}   
+
+
+</body>
+</html>

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'regapp.apps.RegappConfig'
 ]
+   # 'crudproject.apps.CrudprojectConfig'
+   
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
